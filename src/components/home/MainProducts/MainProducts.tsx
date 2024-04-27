@@ -11,6 +11,7 @@ const getProducts = async () => {
         }),
       }
     );
+    throw new Error('Error')
     const { products } = await response.json();
     return products;
   } catch (e) {
@@ -20,12 +21,11 @@ const getProducts = async () => {
 
 export const MainProducts = async () => {
   const products = await getProducts();
-  console.log(products);
   return (
     <section className={styles.MainProducts}>
       <h3>✨ New products released!</h3>
       <div className={styles.MainProducts__grid}>
-        {products?.map((product: any) => {
+        {products.map((product: any) => {
           const imageSrc = product.images[0].src;
           return (
             <article key={product.id}>
