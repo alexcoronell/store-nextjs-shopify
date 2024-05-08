@@ -1,0 +1,23 @@
+.ShoppingCart
+    background-color: transparent,
+    border: none
+    cursor: pointer
+    color: $text-color
+    position: relative
+    &__counter
+        position: absolute
+        border-radius: 50%
+        background-color: $main-contrast
+        display: flex
+        justify-content: center
+        align-items: center
+        top: -0.5rem
+        left: -0.5rem
+        z-index: 1
+        width: 0.9rem
+        height: 0.9rem
+        font-size: 0.7rem
+    & > svg
+        width: 1.25rem
+        height: 1.25rem
+        fill: $text-color
