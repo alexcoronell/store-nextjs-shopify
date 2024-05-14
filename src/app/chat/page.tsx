@@ -1,20 +1,14 @@
-import { getProducts } from 'app/services/shopify/products'
-import {Chat} from '../../components/chat/chat'
-import { createAgent } from 'app/utils/openai/createAgent'
+import { Chat } from "app/components/chat/chat"
+import { getProducts } from "app/services/shopify/products"
+import { createAgent } from "app/utils/openai/createAgent"
 
-export default async function ChatPage(){
 
-    const products = await getProducts()
-    const productTitles = products.map(item => item.title)
-    const flatProductTitles = productTitles.join("\n")
-    console.log(flatProductTitles)
+export default async function ChatPage() {
 
-    const agent = createAgent(flatProductTitles)
+  const products = await getProducts()
+  const productTitles = products.map((product: {title: string}) => product.title)
+  const flatProductTitles = productTitles.join("\n")
+  const agent = createAgent(flatProductTitles)
 
-    return(
-        <>
-            <h1>ChatAI</h1>
-            <Chat agent={agent}/>
-        </>
-    )
+  return <Chat agent={agent}/>
 }

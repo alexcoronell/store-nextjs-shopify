@@ -18,17 +18,17 @@ export default function ShoppingCart() {
     }
   };
 
-  const handleBuy = async() => {
+  const handleBuy = async () => {
     try {
-      setIsBuying(true)
-      const checkoutUrl = await handleCreateCart(cart)
-      if(!checkoutUrl) throw new Error('Error creating url')
-      window.localStorage.removeItem('cart')
-      window.location.href = checkoutUrl
-    } catch(e) {
-      console.error(e)
+      setIsBuying(true);
+      const checkoutUrl = await handleCreateCart(cart);
+      if(!checkoutUrl) throw new Error('Error creating checkout');
+      window.localStorage.removeItem('cart');
+      window.location.href = checkoutUrl;
+    } catch (error) {
+      console.log(error);
     } finally {
-      setIsBuying(false)
+      setIsBuying(false);
     }
   }
 
@@ -50,7 +50,7 @@ export default function ShoppingCart() {
           {
             cart.map(item => (<ShoppingCartItem key={item.id} item={item} />))
           }
-          <button onClick={handleBuy} className={styles.ShoppingCart__buyButton} disabled={isBuying}>
+          <button onClick={handleBuy}  className={styles.ShoppingCart__buyButton} disabled={isBuying}>
             Buy
           </button>
         </div>

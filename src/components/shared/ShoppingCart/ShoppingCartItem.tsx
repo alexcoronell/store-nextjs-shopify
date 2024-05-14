@@ -12,6 +12,7 @@ interface ShoppingCartItemProps {
 export const ShoppingCartItem = ({ item }: ShoppingCartItemProps) => {
 
   const { removeCartItem } = useShoppingCart();
+
   return (
     <div className={styles.ShoppingCartItem}>
       <Image src={item.image} alt={item.title} width={48} height={48} />
